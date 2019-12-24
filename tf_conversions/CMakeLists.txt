@@ -1,20 +1,21 @@
 cmake_minimum_required(VERSION 2.8)
 project(tf_conversions)
 
+find_package(cmake_modules REQUIRED)
 find_package(orocos_kdl REQUIRED)
 find_package(catkin REQUIRED geometry_msgs kdl_conversions tf)
-find_package(Eigen3 REQUIRED)
-
-catkin_python_setup()
+find_package(Eigen REQUIRED)
 
 catkin_package(
-  INCLUDE_DIRS include
+  INCLUDE_DIRS include ${kdl_conversions_INCLUDE_DIRS}
   LIBRARIES ${PROJECT_NAME}
-  DEPENDS EIGEN3 orocos_kdl
+  DEPENDS EIGEN orocos_kdl
   CATKIN_DEPENDS geometry_msgs kdl_conversions tf
 )
 
-include_directories(include ${catkin_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIRS} ${orocos_kdl_INCLUDE_DIRS})
+include_directories(include ${catkin_INCLUDE_DIRS} ${EIGEN_INCLUDE_DIRS} ${orocos_kdl_INCLUDE_DIRS})
+include_directories(${PROJECT_DIRECTORY}../kdl_conversions/include)
+catkin_python_setup()
 
 # Needed due to no full filename in orocos_kdl pkg-config export
 link_directories(${orocos_kdl_LIBRARY_DIRS})
@@ -43,6 +44,7 @@ catkin_add_nosetests(test/posemath.py)
 
 endif()
 
+#include_directories(include ${catkin_INCLUDE_DIRS} ${Eigen_INCLUDE_DIRS})
 
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})

@@ -28,6 +28,7 @@
  */
 
 #include "tf_conversions/tf_kdl.h"
+//#include "/home/root/ros/src/geometry/kdl_conversions/include/kdl_conversions/kdl_msg.h"
 #include "kdl_conversions/kdl_msg.h"
 
 namespace tf {

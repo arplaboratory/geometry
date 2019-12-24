@@ -30,6 +30,7 @@
 #ifndef CONVERSIONS_TF_KDL_H
 #define CONVERSIONS_TF_KDL_H
 
+//#include "/home/root/ros/src/geometry/kdl_conversions/include/kdl_conversions/kdl_msg.h" //backwards compatability for deprecated methods
 #include "kdl_conversions/kdl_msg.h" //backwards compatability for deprecated methods
 #include "tf/transform_datatypes.h"
 #include "kdl/frames.hpp"
